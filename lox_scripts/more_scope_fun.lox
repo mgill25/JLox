@@ -1,0 +1,9 @@
+fun scope(a) {
+    println("a = ", a);
+    println("env = ", env());
+    var a = 20;
+    println("a = ", a);
+    println("env = ", env());
+}
+
+scope(10);

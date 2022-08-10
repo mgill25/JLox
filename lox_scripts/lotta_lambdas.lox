@@ -1,0 +1,45 @@
+fun foo(op) {
+    println("env => ", env());
+    op();
+}
+
+foo(fun() {
+    print "hey from lambda!";
+    print 1 + 2;
+});
+
+fun bar(a, b) {
+    return a + b;
+}
+
+println(bar(10, 20));
+
+
+fun thingDoer(operator, leftOperand, rightOperand) {
+    return operator(leftOperand, rightOperand);
+}
+
+println("before thing doer, env => ", env());
+println(thingDoer(fun (a, b) {
+    return a * b;
+}, 10, 25));
+println("after thing doer, env => ", env());
+
+// Design Choice:
+// Lambda Statement or Lambda Expression
+//  Expressions get evaluated
+//  But Lambdas are Functions! And to make them First-class
+// we should be making Function objects that get lazily evaluated
+// at the call-site.
+
+// Which is fine, but now I have messed up by neat argument list which was
+// previously, all Expressions that get evaluated.
+// So, I need to a) Either have a Superclass that represents *Both*, and make decisions accordingly
+// OR b) I make everything a Statement or c) I make everything an Expression.
+// (c) seems to be the easiest from an implementation pov but goes against my design
+// (a) also seems plausible
+// (b) b seems to be quite impossible, since we definitely need expressions,
+// and if we make everything a statement, then things like foo(print "hello") would be possible,
+// which would be...bad.
+// So, perhaps we need a StmtExpr class
+    // Ironically we have an ExprStmt already

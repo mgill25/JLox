@@ -1,0 +1,9 @@
+println("global => ", env());
+var i = 0;
+{
+    var i = 1;
+    println("inside block scope => ", env());
+    {
+        println("inside nested block scope => ", env());
+    }
+}

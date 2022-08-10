@@ -1,0 +1,9 @@
+fun run3Times(someFun) {
+    for (var i = 0; i < 3; i++) {
+        someFun(i);
+    }
+}
+
+run3Times(fun (arg) {
+    println("arg = ", arg);
+});

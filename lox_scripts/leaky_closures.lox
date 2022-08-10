@@ -1,0 +1,14 @@
+// Leaky Closure
+
+var a = "global";
+{
+  fun showA() {
+    print a;
+  }
+  println(env());
+  showA();
+  println(env());
+  var a = "block";
+  println(env());
+  showA();
+}

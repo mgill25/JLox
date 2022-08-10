@@ -1,0 +1,8 @@
+{
+    fun hello() {
+        println("Inside hello. env = ", env());
+        return;
+    }
+    hello();
+}
+hello();

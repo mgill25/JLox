@@ -1,0 +1,45 @@
+var outerVariable = "This is a global";
+
+fun sayHi(first, last) {
+    // We have some weirdness with respect to variable addition b/w
+    // String and Double, so we'll let a lot of the things slide
+    // Lets make progress on the interpreter itself and ignore trivialities.
+    print outerVariable;
+    print first + " " + last;   // binary operator with args
+    print " " + first;          // binary with string first, arg second
+    print last + " ";           // binary with arg first, string second
+    print first + " " + first + " " + first;    // nested binary with string and arg
+    print last + " " + " " + last;
+    print last + " " + first;
+    print " " + last + first;
+    print " " + first + last;
+    print " " + first + " " + last;
+    print "Hello" + first + " " + last;
+    // print "Hello," + first + " " + last;    // Ok, so it is the comma which is causing the runtime to break. Very interesting.
+    // Likely because comma is a significant part of the syntax?
+    print "---end-of-function---" ;
+}
+
+sayHi("Manish", "Gill");
+
+var name = "Ishu";
+print "Hello" + " " + name;
+
+print "In the beginning";
+for (var i = 0; i < 10; i++) {
+    if (true) {
+        print "This should print";
+        if (true) {
+            break;
+        }
+        print "This should not print";
+    }
+    if (true) {
+        print "This should definitely not print since the loop has been exited";
+    }
+    print "This should also not print";
+}
+print "Loop was exited";
+
+print "Hello, I am using comma inside a string";
+print "Hello, " + "I am using a comma with a binary addition operator";     // This returns null
